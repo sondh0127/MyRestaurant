@@ -80,7 +80,7 @@
                 @forelse($dish->dishPrices as $dish_price)
 
                 <li>
-                    <i class="ti-download text-success"></i>
+                    <!-- <i class="ti-download text-success"></i> -->
                     <span class="text">Dish One - {{$dish_price->dish_type}}</span>
                     <span class="text-success tran-price">{{config('restaurant.currency.symbol')}} {{number_format($dish_price->price,2)}} {{config('restaurant.currency.currency')}}</span>
                     <span class="pull-right">|

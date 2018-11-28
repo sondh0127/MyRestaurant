@@ -107,6 +107,8 @@
     <script src="{{url('/dashboard/plugins/datatables/dataTables.buttons.min.js')}}"></script>
     <script src="{{url('/dashboard/plugins/datatables/jszip.min.js')}}"></script>
     <script src="{{url('/dashboard/plugins/datatables/pdfmake.min.js')}}"></script>
+    <script src="{{url('/dashboard/plugins/datatables/vfs_fonts.js')}}"></script>
+
 
     <script>
         $(document).ready(function () {

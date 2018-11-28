@@ -49,6 +49,12 @@
                     <td>
                         <dl class="dl-horizontal m-b-0">
                             <dt>
+                                Name :
+                            </dt>
+                            <dd>
+                                {{$employee->name}}
+                            </dd>
+                            <dt>
                                 Email :
                             </dt>
                             <dd>

@@ -15,7 +15,7 @@ use App\Model\ProductType;
 use App\Model\Purse;
 use App\Model\PursesPayment;
 use App\Model\Recipe;
-use App\Model\Stock;
+// use App\Model\Stock;
 use App\Model\Supplier;
 use App\Model\Table;
 use App\Model\Unit;
@@ -78,14 +78,14 @@ class UserController extends Controller
         $user_in_purses = Purse::where('user_id',$id)->first();
         $user_in_purses_payment = PursesPayment::where('user_id',$id)->first();
         $user_in_recipe = Recipe::where('user_id',$id)->first();
-        $user_in_stock = Stock::where('user_id',$id)->first();
+        // $user_in_stock = Stock::where('user_id',$id)->first();
         $user_in_supplier = Supplier::where('user_id',$id)->first();
         $user_in_table = Table::where('user_id',$id)->first();
         $user_in_unit = Unit::where('user_id',$id)->first();
         $user_in_employee = Employee::where('user_id',$id)->first();
 
         if($user_in_order || $user_in_dish || $user_id_product || $user_in_product_type || $user_in_purses
-            || $user_in_purses_payment || $user_in_recipe || $user_in_stock || $user_in_supplier || $user_in_table
+            || $user_in_purses_payment || $user_in_recipe || $user_in_supplier || $user_in_table
             || $user_in_unit
         ){
             return redirect()->back()->with('delete_error','You cannot delete this user');
