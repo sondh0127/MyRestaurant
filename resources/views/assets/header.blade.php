@@ -5,7 +5,7 @@
     <div class="topbar-left">
         <div class="text-center">
             <a href="{{url('/')}}" class="logo">
-                <i class="icon-c-logo my-logo">R</i>
+                <i class="icon-c-logo my-logo">M</i>
                 <span class="my-logo">My Restaurant</span>
             </a>
             <!-- Image Logo here -->
@@ -82,8 +82,8 @@
                     <ul class="nav navbar-nav navbar-right pull-right">
                         <li class="dropdown top-menu-item-xs">
                             <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown"
-                               aria-expanded="true"><img src="{{auth()->user()->image ? auth()->user()->image : url('/img_assets/default-thumbnail.jpg')}}" alt="user-img"
-                                                         class="img-circle"> </a>
+                               aria-expanded="true">
+                               <img src="{{auth()->user()->image ? url(auth()->user()->image) : url('/img_assets/default-thumbnail.jpg')}}" alt="user-img" class="img-circle"> </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{url('/profile')}}"><i class="ti-user m-r-10 text-custom"></i> Profile</a>
                                 </li>

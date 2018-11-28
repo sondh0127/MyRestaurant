@@ -27,7 +27,7 @@
     <div class="topbar-left">
         <div class="text-center">
             <a href="{{url('/')}}" class="logo">
-                <i class="icon-c-logo my-logo">R</i>
+                <i class="icon-c-logo my-logo">M</i>
                 <span class="my-logo">My Restaurant</span>
             </a>
 

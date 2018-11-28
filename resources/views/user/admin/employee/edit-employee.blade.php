@@ -147,7 +147,7 @@
                 e.preventDefault();
                 var formData = new FormData(this);
                 $(this).speedPost('/update-employee/'+id, formData, message = {
-                    success: {header: 'Employee Save successfully', body: 'Employee saved'},
+                    success: {header: 'Employee Update successfully', body: 'Employee updated successfully'},
                     error: {header: 'Email address already exist', body: 'Email address found'},
                     warning: {header: 'Internal Server Error', body: 'Internal server error'}
                 });

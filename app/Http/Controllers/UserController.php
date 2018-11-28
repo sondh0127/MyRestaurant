@@ -76,17 +76,17 @@ class UserController extends Controller
         $user_id_product = Product::where('user_id',$id)->first();
         $user_in_product_type = ProductType::where('user_id',$id)->first();
         $user_in_purses = Purse::where('user_id',$id)->first();
-        $user_in_puirses_payment = PursesPayment::where('user_id',$id)->first();
+        $user_in_purses_payment = PursesPayment::where('user_id',$id)->first();
         $user_in_recipe = Recipe::where('user_id',$id)->first();
         $user_in_stock = Stock::where('user_id',$id)->first();
         $user_in_supplier = Supplier::where('user_id',$id)->first();
-        $user_in_tbale = Table::where('user_id',$id)->first();
+        $user_in_table = Table::where('user_id',$id)->first();
         $user_in_unit = Unit::where('user_id',$id)->first();
         $user_in_employee = Employee::where('user_id',$id)->first();
 
         if($user_in_order || $user_in_dish || $user_id_product || $user_in_product_type || $user_in_purses
-            || $user_in_puirses_payment || $user_in_recipe || $user_in_stock || $user_in_supplier || $user_in_tbale
-            || $user_in_unit || $user_in_employee
+            || $user_in_purses_payment || $user_in_recipe || $user_in_stock || $user_in_supplier || $user_in_table
+            || $user_in_unit
         ){
             return redirect()->back()->with('delete_error','You cannot delete this user');
         }else{
@@ -113,8 +113,9 @@ class UserController extends Controller
         $user->email = $request->get('email');
         $user->role = $request->get('role');
         if ($request->hasFile('thumbnail')) {
+            // exception here
             $user->image = $request->file('thumbnail')
-                ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+                ->move('uploads/employee/', rand(100000, 900000) . '.' . $request->thumbnail->extension());
         }
         if ($user->save()) {
             $employee = new Employee();
@@ -124,7 +125,8 @@ class UserController extends Controller
             $employee->address = $request->get('address');
             $employee->user_id = $user->id;
             if ($employee->save()) {
-                Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
+                // exception here
+                // Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
                 return response()->json('Ok', 200);
             }
         }
@@ -162,7 +164,7 @@ class UserController extends Controller
                     ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
             }
             if($user->save()){
-                Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
+                // Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
                 return response()->json('Ok', 200);
             }
         }
