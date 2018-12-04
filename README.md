@@ -1,3 +1,9 @@
+# Install Lamp using tasksel
+
+`sudo apt-get install tasksel`
+
+`sudo tasksel install lamp-server`
+
 # Install requirement environment: LAMP stack
 
 `sudo apt update`
@@ -7,7 +13,6 @@
 `sudo apt install php7.2 libapache2-mod-php7.2 php7.2-mbstring php7.2-xmlrpc php7.2-soap php7.2-gd php7.2-xml php7.2-cli php7.2-zip`
 
 `curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer`
-
 
 # Clone the repository
 `cd /var/www/html`
