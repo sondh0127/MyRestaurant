@@ -56,3 +56,6 @@ add
 ```
 127.0.0.1 myrest.test
 ```
+restart apache2 sever
+
+`sudo service apache2 restart`
