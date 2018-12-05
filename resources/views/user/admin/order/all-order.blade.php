@@ -19,7 +19,7 @@
                     <a href="{{url('/')}}">Home</a>
                 </li>
                 <li class="active">
-                    Order
+                <a href="{{url('/all-order')}}">Order</a>
                 </li>
                 <li class="active">
                     All Order

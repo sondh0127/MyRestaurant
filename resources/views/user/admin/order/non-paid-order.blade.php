@@ -13,16 +13,16 @@
                             class="m-l-5"></span></a>
             </div>
 
-            <h4 class="page-title">Non Paid Orders</h4>
+            <h4 class="page-title">Non-paid Order</h4>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{url('/')}}">Home</a>
                 </li>
                 <li>
-                    <a href="#">Order</a>
+                    <a href="{{url('/all-order')}}">Order</a>
                 </li>
                 <li class="active">
-                    Non Paidn Order
+                    Non-paid Order
                 </li>
             </ol>
         </div>

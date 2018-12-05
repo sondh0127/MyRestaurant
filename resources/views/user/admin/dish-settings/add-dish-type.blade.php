@@ -8,7 +8,7 @@
     <div class="card-box">
         <h4 class="m-t-0 header-title"><b>New Dish Type</b></h4>
         <p class="text-muted font-13 m-b-30">
-            Responsive is an extension for DataTables that resolves that problem by optimising the
+            Description for new dish
         </p>
         <form class="form-horizontal" role="form" id="unitForm" method="POST" data-parsley-validate novalidate>
             {{csrf_field()}}
