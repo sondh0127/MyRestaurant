@@ -72,4 +72,9 @@ add
 
 `sudo service apache2 restart`
 
+# Clear config
+`cd /var/www/html/myrest`
+
+`php artisan config:clear`
+
 # Go to myrest.test
