@@ -82,7 +82,7 @@
                                 <div class="col-md-6">
                                     <select name="role" id="" class="form-control" required>
                                         <option value="">Select One</option>
-                                        <option value="2">Shop Manager</option>
+                                        <option value="2">Manager</option>
                                         <option value="3">Kitchen</option>
                                         <option value="4">Waiter</option>
                                     </select>

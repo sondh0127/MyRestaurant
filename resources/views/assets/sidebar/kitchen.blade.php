@@ -6,11 +6,11 @@
 
 
                 <li class="">
-                    <a href="{{url('/home')}}" class="waves-effect"><i class="ti-home"></i> <span> Dashboard </span> </a>
+                    <a href="{{url('/home')}}" class="waves-effect"><i class="icon icon-fire"></i> <span> Kitchen Status </span> </a>
                 </li>
 
                 <li class="">
-                    <a href="{{url('/cooking-history')}}" class="waves-effect"><i class="ti-home"></i> <span> History </span> </a>
+                    <a href="{{url('/cooking-history')}}" class="waves-effect"><i class="fa fa-history"></i> <span> History </span> </a>
                 </li>
 
 

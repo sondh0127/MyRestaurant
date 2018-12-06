@@ -24,6 +24,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
+// use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -141,8 +142,8 @@ class UserController extends Controller
     public function updateEmployee(UpdateEmployee $request, $id)
     {
         $this->validate($request,[
-            'email'   =>   Rule::unique('users')->ignore($id, 'id'),
             'email'   =>   Rule::unique('employees')->ignore($id, 'id'),
+            'email'   =>   Rule::unique('users')->ignore($id + 1, 'id'),
         ]);
 
         $employee = Employee::findOrFail($id);
