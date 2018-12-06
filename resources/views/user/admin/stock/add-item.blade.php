@@ -55,7 +55,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label" for="example-email">Product Category :</label>
+                                <label class="col-md-2 control-label" for="example-email">Product category :</label>
                                 <div class="col-md-8">
                                     <select name="product_type_id" id="" class="form-control">
                                         <option value="">Select One</option>
