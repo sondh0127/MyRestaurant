@@ -118,7 +118,7 @@
                                 <i class="fa fa-pencil"></i>
                             </a>
 
-                            <a href="#" onclick="$(this).confirmDelete('/delete-employee/{{$employee->user->id}}')" class="btn btn-danger waves-effect waves-light">
+                            <a href="#" onclick="$(this).confirmDeleteOption('/delete-employee/{{$employee->user->id}}', 'employee \'{{$employee->name}}\'')" class="btn btn-danger waves-effect waves-light">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                         </div>

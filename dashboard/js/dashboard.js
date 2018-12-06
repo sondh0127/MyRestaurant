@@ -15,7 +15,14 @@ $(document).ready(function (e) {
     // $(".select2").select2();
 
     $.fn.confirmDelete = function (url) {
-        var conf = confirm('Are You sure to delete ?');
+        var conf = confirm('Are you sure to delete ?');
+        if(conf){
+            window.location.replace(url);
+        }
+    };
+
+    $.fn.confirmDeleteOption = function (url, option) {
+        var conf = confirm('Are you sure to delete ' + option + ' ?');
         if(conf){
             window.location.replace(url);
         }
