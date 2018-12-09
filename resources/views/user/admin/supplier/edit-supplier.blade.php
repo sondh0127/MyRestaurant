@@ -7,14 +7,28 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
+            <div class="btn-group pull-right m-t-15">
+                <a href="{{url('/all-supplier')}}" class="btn btn-default waves-effect">All Supplier <span
+                            class="m-l-5"></span></a>
+            </div>
+
+            <h4 class="page-title">Edit Supplier</h4>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{url('/')}}">Home</a>
+                </li>
+                <li class="active">
+                    Supplier
+                </li>
+                <li class="active">
+                    Edit supplier
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <div class="card-box">
-                <center>
-                    <h4 class="m-t-0 header-title">Edit Supplier</h4>
-                    <p>Edit Supplier</p>
-                </center>
-                <hr>
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <form class="form-horizontal" role="form" action="#" id="addSupplier" method="post"

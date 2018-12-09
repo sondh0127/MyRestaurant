@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
-                <h4 class="m-t-0 header-title"><b>Add Item</b></h4>
+                <h4 class="m-t-0 header-title"><b>Add Product</b></h4>
                 <p>
 
                 </p>

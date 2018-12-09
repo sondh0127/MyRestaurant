@@ -127,7 +127,7 @@ class UserController extends Controller
             $employee->user_id = $user->id;
             if ($employee->save()) {
                 // exception here
-                // Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
+                Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
                 return response()->json('Ok', 200);
             }
         }
@@ -165,7 +165,7 @@ class UserController extends Controller
                     ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
             }
             if($user->save()){
-                // Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
+                Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
                 return response()->json('Ok', 200);
             }
         }

@@ -52,7 +52,7 @@
                     Total Payment :
                 </dt>
                 <dd>
-                    {{count($supplier->payment->sum('payment_amount'))}} Time(s)
+                    $ {{$supplier->payment->sum('payment_amount')}} USD
                 </dd>
             </dl>
             <hr>

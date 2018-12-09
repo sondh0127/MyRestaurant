@@ -65,7 +65,7 @@
                         Add Dish
                     </button>
                     <button type="reset" class="btn btn-default waves-effect waves-light m-l-5">
-                        Cancel
+                        Clear
                     </button>
                 </div>
             </div>
@@ -78,7 +78,7 @@
             <tr>
                 <th style="border: 1px solid black">Dish Name</th>
                 <th width="10%" style="border: 1px solid black">Type</th>
-                <th style="border: 1px solid black">Q</th>
+                <th style="border: 1px solid black">Quantity</th>
                 <th style="border: 1px solid black">Price ({{config('restaurant.currency.currency')}})</th>
                 <th width="5%" style="border: 1px solid black">Action</th>
             </tr>
@@ -147,7 +147,7 @@
                 for (var i = 0; i <= dish_info.length; i++) {
                     if (dish_info[i].id == $(this).val()) {
                         var dish_details = dish_info[i];
-                        console.log(dish_info[i]);
+                        // console.log(dish_info[i]);
                         $("#price").val($("#quantity").val()*dish_details.price);
                         dish_price = $("#quantity").val()*dish_details.price;
                         break;
@@ -170,21 +170,21 @@
             });
 
             $("#submitOrder").on('click',function () {
-                console.log('Clicked');
+                // console.log('Clicked');
                 var saveOrder = {
                     _token : $("input[name=_token]").val(),
                     table_id : $("#tale").val(),
                     dishList : dishList
                 }
                 $.post("/save-order", saveOrder,function (data) {
-                   console.log(data);
+                //    console.log(data);
                 });
             });
 
             $("#orderForm").on('submit',function (e) {
                 e.preventDefault();
                 total_price = parseInt($("#price").val()) + parseInt(total_price);
-                console.log(total_price);
+                // console.log(total_price);
                 $("#totalPrice").text(total_price);
                 $("#totalDish").text(dishList.length+1);
                 dishInfo = {
@@ -207,7 +207,7 @@
 
             //Open Model
             $.fn.deleteDishFromList = function (index) {
-                console.log(dishList[index]);
+                // console.log(dishList[index]);
                 var con = confirm("Are you sure ?");
                 if(con){
                     console.log('Confirm'+ index);
@@ -219,7 +219,7 @@
             };
 
             $.fn.saveOrder = function () {
-                console.log('Order Submit');
+                // console.log('Order Submit');
                 var saveOrder = {
                     _token : $("input[name=_token]").val(),
                     table_id : $("#tale").val(),
@@ -229,7 +229,7 @@
                     change : change
                 };
                 $.post("/save-order", saveOrder,function (data) {
-                    console.log(data);
+                    // console.log(data);
                 }).done(function () {
                     $.Notification.notify('success',
                         'bottom right',
@@ -307,7 +307,7 @@
                 };
 
                 $.fn.showChange = function (data) {
-                    console.log('Change' + $(this).val());
+                    // console.log('Change' + $(this).val());
                     payment = $(this).val();
                     if($(this).val() != ""){
                         if(data- $(this).val() < 0){

@@ -59,7 +59,7 @@
             });
 
             $.fn.serve = function (index) {
-                var conf = confirm('Are you sre ?')
+                var conf = confirm('Are you sure ?')
                 if(conf){
                     $.get('/order-served/'+orders[index].id, function (data) {
                         orders.splice(index,1);

@@ -82,7 +82,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{url('/new-purses')}}">New Purses</a></li>
                         <li><a href="{{url('/all-purses')}}">All Purses</a></li>
-                        <li><a href="{{url('/add-item')}}">Add Item</a></li>
+                        <li><a href="{{url('/add-item')}}">Add Product</a></li>
                         <li><a href="{{url('/all-item')}}">All Stock</a></li>
                     </ul>
                 </li>

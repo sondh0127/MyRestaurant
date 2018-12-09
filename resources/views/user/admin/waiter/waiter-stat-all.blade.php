@@ -48,7 +48,7 @@
 
 
         <center>
-            <h4 class="text-dark header-title m-t-0">Kitchen Stat</h4>
+            <h4 class="text-dark header-title m-t-0">Waiter Stat</h4>
             <p>Date Range : {{$start}} to {{$end}}</p>
         </center>
         <div id="kitchenGraph" style="height: 303px;">

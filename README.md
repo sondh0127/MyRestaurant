@@ -1,4 +1,15 @@
-# Install requirement environment: LAMP stack
+# Install System Requirement environment:
+
+PHP >= 7.0.0
+OpenSSL PHP Extension
+PDO PHP Extension
+Mbstring PHP Extension
+Tokenizer PHP Extension
+XML PHP Extension
+MYSQL 5.0 or later verions
+SMTP mail server
+Pusher API
+
 ## Apache
 `sudo apt update`
 

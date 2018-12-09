@@ -39,16 +39,6 @@
                     </ul>
                 </li>
 
-
-
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="ti-truck"></i> <span> Supplier </span> <span class="menu-arrow"></span> </a>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ url('/add-supplier') }}">Add Supplier</a></li>
-                        <li><a href="{{ url('/all-supplier') }}">All Supplier</a></li>
-                    </ul>
-                </li>
-
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect {{isset($account_menu) ? 'active' : ''}}"><i class="icon icon-calculator"></i><span> Accounting </span> <span class="menu-arrow"></span></a>
                     <ul>
@@ -69,6 +59,16 @@
 
                 </li>
 
+                <hr>
+
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="ti-truck"></i> <span> Supplier </span> <span class="menu-arrow"></span> </a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url('/add-supplier') }}">Add Supplier</a></li>
+                        <li><a href="{{ url('/all-supplier') }}">All Supplier</a></li>
+                    </ul>
+                </li>
+
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="ti-menu-alt"></i><span>Tables Management</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
@@ -82,7 +82,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{url('/new-purses')}}">New Purses</a></li>
                         <li><a href="{{url('/all-purses')}}">All Purses</a></li>
-                        <li><a href="{{url('/add-item')}}">Add Item</a></li>
+                        <li><a href="{{url('/add-item')}}">Add Product</a></li>
                         <li><a href="{{url('/all-item')}}">All Stock</a></li>
                     </ul>
                 </li>

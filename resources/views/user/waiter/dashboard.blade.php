@@ -49,7 +49,7 @@
             </div>
             <div class="text-right">
                 <h3 class="text-dark"><b class="counter">{{count(\App\Model\Order::where('served_by',auth()->user()->id)->where('status',2)->get())}}</b></h3>
-                <p class="text-muted">Pending Orde to Serve</p>
+                <p class="text-muted">Pending Order to Serve</p>
             </div>
             <div class="clearfix"></div>
         </div>

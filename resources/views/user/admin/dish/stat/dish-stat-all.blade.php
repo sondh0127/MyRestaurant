@@ -41,7 +41,7 @@
         </form>
         <hr>
         <center>
-            <h4 class="text-dark header-title m-t-0">Kitchen Stat</h4>
+            <h4 class="text-dark header-title m-t-0">Dish Stat</h4>
             <p>Date Range : {{$start}} to {{$end}}</p>
         </center>
         <div id="dishGraph" style="height: 303px;">
