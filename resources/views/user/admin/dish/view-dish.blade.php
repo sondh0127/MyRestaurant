@@ -31,10 +31,11 @@
     <div class="row port">
         <div class="portfolioContainer">
             @foreach($dish->dishImages as $image)
+            <?php $url = \Illuminate\Support\Facades\Storage::disk('s3')->url($image->image); ?>
             <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
                 <div class="gal-detail thumb">
-                    <a href="{{url($image->image)}}" class="image-popup" title="{{$image->title}}">
-                        <img src="{{url($image->image)}}" class="thumb-img" alt="work-thumbnail">
+                    <a href="{{$url}}" class="image-popup" title="{{$image->title}}">
+                        <img src="{{$url}}" class="thumb-img" alt="work-thumbnail">
                     </a>
                     <h4>{{$image->title}}</h4>
                 </div>

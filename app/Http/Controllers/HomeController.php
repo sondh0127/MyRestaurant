@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Mockery\Exception;
+use Illuminate\Support\Facades\Storage;
+
 
 class HomeController extends Controller
 {
@@ -30,7 +32,7 @@ class HomeController extends Controller
     public function welcome()
     {
         if(config('restaurant.hasInstall') == 1){
-            return view('welcome');
+            return view('weldcome');
         }else{
             return redirect()->to('/install');
         }
@@ -70,7 +72,11 @@ class HomeController extends Controller
      */
     public function profileEdit()
     {
-        return view('user.profile.edit-profile');
+        $url = auth()->user()->image != "" | null ? 
+        Storage::disk('s3')->url(auth()->user()->image) : url('/img_assets/avater.png');
+        return view('user.profile.edit-profile', [
+            'url' => $url
+        ]);
     }
 
     /**
@@ -84,8 +90,14 @@ class HomeController extends Controller
         $user->email = $request->get('email');
         $user->name = $request->get('name');
         if ($request->hasFile('thumbnail')) {
-            $user->image = $request->file('thumbnail')
-                ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+            // $user->image = $request->file('thumbnail')
+            //     ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+            
+            $image = $request->file('thumbnail');
+            $imageFileName = time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'employee/' . $imageFileName;
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            $user->image = $filePath;
         }
         if($user->save()){
             $employee = Employee::where('user_id',$user->id)->first();
@@ -111,8 +123,14 @@ class HomeController extends Controller
         $user->email = $request->get('email');
         $user->name = $request->get('name');
         if ($request->hasFile('thumbnail')) {
-            $user->image = $request->file('thumbnail')
-                ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+            // $user->image = $request->file('thumbnail')
+            //     ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+
+            $image = $request->file('thumbnail');
+            $imageFileName = time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'employee/' . $imageFileName;
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            $user->image = $filePath;
         }
         if($user->save()){
             return response()->json('Ok',200);

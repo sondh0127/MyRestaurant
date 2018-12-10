@@ -11,7 +11,7 @@
                 <div class="card-box">
                     <div class="contact-card">
                         <a class="pull-left" href="#">
-                            <img class="" src="{{$dish->thumbnail}}" alt="">
+                            <img class="" src="{{\Illuminate\Support\Facades\Storage::disk('s3')->url($dish->thumbnail)}}" alt="">
                         </a>
                         <div class="member-info">
                             <h4 class="m-t-0 m-b-5 header-title"><b>{{$dish->dish}}</b></h4>

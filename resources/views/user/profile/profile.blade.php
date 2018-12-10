@@ -8,7 +8,7 @@
     <div class="card-box">
         <center>
             <div class="row">
-                <img src="{{auth()->user()->image ? auth()->user()->image : 'img_assets/default-thumbnail.jpg'}}"
+                <img src="{{auth()->user()->image ? \Illuminate\Support\Facades\Storage::disk('s3')->url(auth()->user()->image) : 'img_assets/default-thumbnail.jpg'}}"
                      class="img-responsive img-circle" width="250px" alt="">
                 <h3>{{auth()->user()->name}}</h3>
                 <p>Role : <b> @if(auth()->user()->role ==1) Admin @elseif(auth()->user()->role ==2) Resturant

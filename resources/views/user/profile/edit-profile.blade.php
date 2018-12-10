@@ -18,7 +18,7 @@
                                 <div class="form-group">
                                     <label for="" class="col-md-2 control-label">Photo</label>
                                     <div class="col md-10">
-                                        <div id="image-preview" style="background-image: url({{url(auth()->user()->image != "" | null ? auth()->user()->image : '/img_assets/avater.png')}})">
+                                        <div id="image-preview" style="background-image: url({{$url}})">
                                             <label for="image-upload" id="image-label">Choose Photo</label>
                                             <input type="file" name="thumbnail" id="image-upload"/>
                                         </div>

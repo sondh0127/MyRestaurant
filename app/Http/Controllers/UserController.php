@@ -171,8 +171,14 @@ class UserController extends Controller
                 $user->password = Hash::make($request->get('password'));
             }
             if ($request->hasFile('thumbnail')) {
-                $user->image = $request->file('thumbnail')
-                    ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+                // $user->image = $request->file('thumbnail')
+                //     ->move('uploads/employee', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+
+                $image = $request->file('thumbnail');
+                $imageFileName = time() . '.' . $image->getClientOriginalExtension();
+                $filePath = 'employee/' . $imageFileName;
+                Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+                $user->image = $filePath;
             }
             if($user->save()){
                 Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));

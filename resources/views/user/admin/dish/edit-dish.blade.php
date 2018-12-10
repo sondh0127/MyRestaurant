@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label for="" class="col-md-2 control-label">Thumbnail <span class="text-danger">*</span> </label>
                     <div class="col md-10">
-                        <div id="image-preview" style="background-image: url({{url($dish->thumbnail != "" | null ? $dish->thumbnail : '/img_assets/avater.png')}})">
+                        <div id="image-preview" style="background-image: url({{$dish->thumbnail}})">
                             <label for="image-upload" id="image-label">Choose Photo</label>
                             <input type="file" name="thumbnail" id="image-upload"/>
                         </div>

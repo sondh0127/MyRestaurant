@@ -71,7 +71,7 @@
                     @foreach($dishes as $dish)
                     <div class="col-md-6 dish">
                         <div class="col-md-6">
-                            <img src="{{url($dish->thumbnail)}}" alt="" class="img-thumbnail">
+                            <img src="{{\Illuminate\Support\Facades\Storage::disk('s3')->url($dish->thumbnail)}}" alt="" class="img-thumbnail">
                         </div>
                         <div class="col-md-6">
                             <h3><u>{{$dish->dish}}</u></h3>
@@ -87,7 +87,7 @@
                         <div class="col-md-12">
                            @foreach($dish->dishImages as $image)
                                 <div class="col-md-3">
-                                    <img src="{{url($image->image)}}" class="img-responsive img-thumbnail" alt="">
+                                    <img src="{{\Illuminate\Support\Facades\Storage::disk('s3')->url($image->image)}}" class="img-responsive img-thumbnail" alt="">
                                 </div>
                            @endforeach
                         </div>

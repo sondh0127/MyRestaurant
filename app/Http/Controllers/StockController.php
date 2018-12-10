@@ -11,6 +11,7 @@ use App\Model\Recipe;
 use App\Model\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class StockController extends Controller
 {
@@ -123,9 +124,15 @@ class StockController extends Controller
         $item->unit_id = $request->get('unit_id');
         $item->product_type_id = $request->get('product_type_id');
         if($request->hasFile('thumbnail')){
-            $item->thumbnail = $request->file('thumbnail')
-                ->move('uploads/products/thumbnail',
-                    rand(8000000,99999999).'.'.$request->thumbnail->extension());
+            // $item->thumbnail = $request->file('thumbnail')
+            //     ->move('uploads/products/thumbnail',
+            //         rand(8000000,99999999).'.'.$request->thumbnail->extension());
+
+            $image = $request->file('thumbnail');
+            $imageFileName = 'item' . time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'products/thumbnail/' . $imageFileName;
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            $item->thumbnail = $filePath;
         }
         $item->user_id = auth()->user()->id;
         if($item->save()){
@@ -152,9 +159,14 @@ class StockController extends Controller
         $item->unit_id = $request->get('unit_id');
         $item->product_type_id = $request->get('product_type_id');
         if($request->hasFile('thumbnail')){
-            $item->thumbnail = $request->file('thumbnail')
-                ->move('uploads/products/thumbnail',
-                    rand(8000000,99999999).'.'.$request->thumbnail->extension());
+            // $item->thumbnail = $request->file('thumbnail')
+            //     ->move('uploads/products/thumbnail',
+            //         rand(8000000,99999999).'.'.$request->thumbnail->extension());
+            $image = $request->file('thumbnail');
+            $imageFileName = 'item' . time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'products/thumbnail/' . $imageFileName;
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            $item->thumbnail = $filePath;
         }
         $item->user_id = auth()->user()->id;
         if($item->save()){

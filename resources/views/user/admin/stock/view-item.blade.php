@@ -9,7 +9,7 @@
     {{--{{$item->cookedProducts}}--}}
     <div class="card-box">
         <center>
-            <img src="{{$item->thumbnail ? url($item->thumbnail) : url('/img_assets/avater.png')}}" alt="" width="150px" class="img-responsive"/>
+            <img src="{{$item->thumbnail ? \Illuminate\Support\Facades\Storage::disk('s3')->url($item->thumbnail) : url('/img_assets/avater.png')}}" alt="" width="150px" class="img-responsive"/>
             <h4 class="header-title">{{$item->product_name}} - Summary</h4>
             <p>
                 Product Type : <b><i>{{$item->productType->product_type}} </i></b> <br>

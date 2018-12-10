@@ -8,6 +8,7 @@ use App\Model\DishPrice;
 use App\Model\OrderDetails;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -40,6 +41,8 @@ class DishController extends Controller
     public function editDish($id)
     {
         $dish = Dish::findOrFail($id);
+        $dish->thumbnail = $dish->thumbnail != "" | null ? 
+        Storage::disk('s3')->url($dish->thumbnail) : url('/img_assets/avater.png');
         return view('user.admin.dish.edit-dish', [
             'dish' => $dish
         ]);
@@ -53,6 +56,8 @@ class DishController extends Controller
     public function viewDish($id)
     {
         $dish = Dish::findOrFail($id);
+        $dish->thumbnail = $dish->thumbnail != "" | null ? 
+        Storage::disk('s3')->url($dish->thumbnail) : url('/img_assets/avater.png');
         return view('user.admin.dish.view-dish', [
             'dish' => $dish
         ]);
@@ -90,9 +95,14 @@ class DishController extends Controller
         $dish = new Dish();
         $dish->dish = $request->get('dish');
         if ($request->hasFile('thumbnail')) {
-            $dish->thumbnail = $request->file('thumbnail')
-                ->move('uploads/dish/thumbnail',
-                    rand(8000000, 99999999) . '.' . $request->thumbnail->extension());
+            // $dish->thumbnail = $request->file('thumbnail')
+            //     ->move('uploads/dish/thumbnail',
+            //         rand(8000000, 99999999) . '.' . $request->thumbnail->extension());
+            $image = $request->file('thumbnail');
+            $imageFileName = 'dish' . time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'dish/thumbnail/' . $imageFileName;
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            $dish->thumbnail = $filePath;
         }
         $dish->user_id = auth()->user()->id;
         if ($dish->save()) {
@@ -111,9 +121,14 @@ class DishController extends Controller
         $dish = Dish::findOrFail($id);
         $dish->dish = $request->get('dish');
         if ($request->hasFile('thumbnail')) {
-            $dish->thumbnail = $request->file('thumbnail')
-                ->move('uploads/dish/thumbnail',
-                    rand(8000000, 99999999) . '.' . $request->thumbnail->extension());
+            // $dish->thumbnail = $request->file('thumbnail')
+            //     ->move('uploads/dish/thumbnail',
+            //         rand(8000000, 99999999) . '.' . $request->thumbnail->extension());
+            $image = $request->file('thumbnail');
+            $imageFileName = 'dish' . time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'dish/thumbnail/' . $imageFileName;
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            $dish->thumbnail = $filePath;
         }
         $dish->user_id = auth()->user()->id;
         $dish->status = $request->get('status') == 'on' ? 1 : 0;
@@ -209,9 +224,16 @@ class DishController extends Controller
         $dish_image->dish_id = $request->get('dish_id');
         $dish_image->user_id = auth()->user()->id;
         if ($request->hasFile('image')) {
-            $dish_image->image = $request->file('image')
-                ->move('uploads/dish/images',
-                    rand(8000000, 99999999) . '.' . $request->image->extension());
+
+            // $dish_image->image = $request->file('image')
+            //     ->move('uploads/dish/images',
+            //         rand(8000000, 99999999) . '.' . $request->image->extension());
+
+            $image = $request->file('image');
+            $imageFileName = 'dish_image' . time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'dish/images/' . $imageFileName;
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            $dish_image->image = $filePath;
         }
         if ($dish_image->save()) {
             return redirect()->back();

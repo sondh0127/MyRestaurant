@@ -99,7 +99,7 @@
                                     ?>
                                     <div class="col-md-6">
                                         <div class="col-md-4">
-                                            <img src="{{$product->thumbnail != '' | null ? $product->thumbnail : url('/img_assets/avater.png') }}"
+                                            <img src="{{$product->thumbnail != '' | null ? \Illuminate\Support\Facades\Storage::disk('s3')->url($product->thumbnail) : url('/img_assets/avater.png') }}"
                                                  class="img-responsive thumbnail m-r-15">
                                         </div>
                                         <div class="col-md-8">
@@ -154,7 +154,7 @@
                                 $product_unit = $product->unit->unit; ?>
                                 <div class="col-md-6">
                                     <div class="col-md-4">
-                                        <img src="{{$product->thumbnail != '' | null ? $product->thumbnail : url('/img_assets/avater.png')}}"
+                                        <img src="{{$product->thumbnail != '' | null ? \Illuminate\Support\Facades\Storage::disk('s3')->url($product->thumbnail) : url('/img_assets/avater.png')}}"
                                              class="img-responsive thumbnail m-r-15">
                                     </div>
                                     <div class="col-md-8">
