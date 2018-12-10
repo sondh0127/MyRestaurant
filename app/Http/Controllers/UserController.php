@@ -47,7 +47,7 @@ class UserController extends Controller
     {
         $employees = Employee::all();
         foreach ($employees as &$employee) {
-            $employee->image = Storage::disk('s3')->url($employee->user->image);
+            $employee->image = $employee->user->image ? Storage::disk('s3')->url($employee->user->image) : '';
         }
         return view('user.admin.employee.all-employees', [
             'employees' => $employees
