@@ -44,7 +44,7 @@
                 <tr>
                     <td>{{$count++}} .</td>
                     <td>
-                        <img src="{{$employee->user->image != '' | null ? $employee->user->image : url('/img_assets/avater.png')}}" alt="" class="img-responsive" width="100px">
+                        <img src="{{$employee->image != '' | null ? $employee->image : url('/img_assets/avater.png')}}" alt="" class="img-responsive" width="100px">
                     </td>
                     <td>
                         <dl class="dl-horizontal m-b-0">

@@ -62,9 +62,11 @@
         <div class="text-center">
 
         </div>
+        @if (count($dish))
         <div id="myfirstchart" style="height: 303px;">
 
         </div>
+        @endif
 
     </div>
 </div>
@@ -73,9 +75,11 @@
     <div class="card-box">
         <h4 class="text-dark header-title m-t-0">Daily Order by Waiter</h4>
             <div class="text-center"></div>
+            @if (count($waiter))
             <div id="dailyOrderByWaiter" style="height: 303px;">
 
             </div>
+            @endif
 
     </div>
 </div>
@@ -84,10 +88,11 @@
     <div class="card-box">
         <h4 class="text-dark header-title m-t-0">Daily Order by Kitchen</h4>
         <div class="text-center"></div>
+        @if (count($kitchen))
         <div id="dailyOrderByKitchen" style="height: 303px;">
 
         </div>
-
+        @endif
     </div>
 </div>
 
@@ -95,7 +100,6 @@
     {{--{{count($kitchen[0]->kitchenOrderToday)}}--}}
     {{--{{count($kitchen[1]->kitchenOrderToday)}}--}}
 {{--</pre>--}}
-
 @section('extra-js')
 
     <script src="{{url('/dashboard/plugins/raphael/raphael-min.js')}}"></script>

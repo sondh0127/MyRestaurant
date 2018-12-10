@@ -24,6 +24,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
+
 // use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -44,6 +46,9 @@ class UserController extends Controller
     public function allEmployees()
     {
         $employees = Employee::all();
+        foreach ($employees as &$employee) {
+            $employee->image = Storage::disk('s3')->url($employee->user->image);
+        }
         return view('user.admin.employee.all-employees', [
             'employees' => $employees
         ]);
@@ -115,8 +120,13 @@ class UserController extends Controller
         $user->role = $request->get('role');
         if ($request->hasFile('thumbnail')) {
             // exception here
-            $user->image = $request->file('thumbnail')
-                ->move('uploads/employee/', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+            // $user->image = $request->file('thumbnail')
+            //     ->move('uploads/employee/', rand(100000, 900000) . '.' . $request->thumbnail->extension());
+            $image = $request->file('thumbnail');
+            $imageFileName = time() . '.' . $image->getClientOriginalExtension();
+            $filePath = 'employee/' . $imageFileName;
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            $user->image = $filePath;
         }
         if ($user->save()) {
             $employee = new Employee();

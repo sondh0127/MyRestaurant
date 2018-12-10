@@ -83,7 +83,7 @@
                 @forelse($dish_price->dish->dishPrices as $dish_price)
                     <li>
                         <i class="ti-download text-success"></i>
-                        <span class="text">Dish One - {{$dish_price->dish_type}}</span>
+                        <span class="text">{{}} - {{$dish_price->dish_type}}</span>
                         <span class="text-success tran-price">{{config('restaurant.currency.symbol')}} {{number_format($dish_price->price,2)}} {{config('restaurant.currency.currency')}}</span>
                         <span class="pull-right">|
                         <a href="{{url('/edit-dish-price/'.$dish_price->id)}}" class="btn btn-link"><i class="fa fa-pencil"></i></a>
