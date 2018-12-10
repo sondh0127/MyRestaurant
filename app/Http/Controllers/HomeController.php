@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function welcome()
     {
         if(config('restaurant.hasInstall') == 1){
-            return view('weldcome');
+            return view('welcome');
         }else{
             return redirect()->to('/install');
         }
