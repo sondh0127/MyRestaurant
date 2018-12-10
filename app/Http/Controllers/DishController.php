@@ -116,7 +116,7 @@ class DishController extends Controller
                     rand(8000000, 99999999) . '.' . $request->thumbnail->extension());
         }
         $dish->user_id = auth()->user()->id;
-        $dish->available = $request->get('available') == 'on' ? 1 : 0;
+        $dish->status = $request->get('status') == 'on' ? 1 : 0;
         if ($dish->save()) {
             return response()->json('Ok', 200);
         }

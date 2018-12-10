@@ -80,7 +80,7 @@
 
 
                     <div class="checkbox checkbox-custom checkbox-circle col-md-offset-2">
-                        <input id="checkbox71" name="available" type="checkbox" {{$dish->available == 1 ? 'checked' : ''}}>
+                        <input id="checkbox71" name="status" type="checkbox" {{$dish->status == 1 ? 'checked' : ''}}>
                         <label for="checkbox71">
                             Available
                         </label>
