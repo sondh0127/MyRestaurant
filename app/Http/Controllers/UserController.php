@@ -62,6 +62,7 @@ class UserController extends Controller
     public function editEmployee($id)
     {
         $employee = Employee::findOrFail($id);
+        $employee->image = $employee->user->image ? Storage::disk('s3')->url($employee->user->image) : '';
         return view('user.admin.employee.edit-employee', [
             'employee' => $employee
         ]);
@@ -153,7 +154,7 @@ class UserController extends Controller
     {
         $this->validate($request,[
             'email'   =>   Rule::unique('employees')->ignore($id, 'id'),
-            'email'   =>   Rule::unique('users')->ignore($id + 1, 'id'),
+            // 'email'   =>   Rule::unique('users')->ignore($id + 1, 'id'),
         ]);
 
         $employee = Employee::findOrFail($id);
