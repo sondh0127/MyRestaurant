@@ -84,7 +84,7 @@ class StockController extends Controller
         $product_on_dish = Recipe::where('product_id',$id)->first();
         $product_on_purses = PursesProduct::where('product_id',$id)->first();
         $product_on_cooked = CookedProduct::where('product_id')->first();
-        if(!$product_on_dish || !$product_on_purses || !$product_on_cooked){
+        if($product_on_dish || $product_on_purses || $product_on_cooked){
             return redirect()->to('/cannot-delete-item/'.$id);
         }else{
             $product->delete();
@@ -131,7 +131,7 @@ class StockController extends Controller
             $image = $request->file('thumbnail');
             $imageFileName = 'item' . time() . '.' . $image->getClientOriginalExtension();
             $filePath = 'products/thumbnail/' . $imageFileName;
-            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');
             $item->thumbnail = $filePath;
         }
         $item->user_id = auth()->user()->id;
@@ -165,7 +165,7 @@ class StockController extends Controller
             $image = $request->file('thumbnail');
             $imageFileName = 'item' . time() . '.' . $image->getClientOriginalExtension();
             $filePath = 'products/thumbnail/' . $imageFileName;
-            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');
             $item->thumbnail = $filePath;
         }
         $item->user_id = auth()->user()->id;

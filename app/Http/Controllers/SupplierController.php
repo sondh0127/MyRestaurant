@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\Supplier;
+use App\Model\PursesPayment;
+use App\Model\Purse;
+
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -43,7 +46,15 @@ class SupplierController extends Controller
 
     public function deleteSupplier($id)
     {
-
+        $supplier = Supplier::findOrFail($id);
+        $supplier_on_purses = PursesPayment::where('supplier_id', $id)->first();
+        $supplier_on_purses_payment = Purse::where('supplier_id', $id)->first();
+        if($supplier_on_purses || $supplier_on_purses_payment){
+            return redirect()->back()->with('delete_error','Cannot delete suppiler! This suppiler has been used in purses payment.');
+        }else{
+            $supplier->delete();
+            return redirect()->back()->with('delete_success','Delete suppiler successfully!');
+        }
     }
 
     /**

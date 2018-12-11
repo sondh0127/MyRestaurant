@@ -58,7 +58,7 @@
                             <a href="{{url('/view-supplier/'.$supplier->id)}}" class="btn btn-info waves-effect waves-light">
                                 <i class="fa fa-info"></i>
                             </a>
-                            <a href="#" class="btn btn-danger waves-effect waves-light">
+                        <a href="#" onclick="$(this).confirmDelete('/delete-supplier/{{$supplier->id}}')" class="btn btn-danger waves-effect waves-light">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                         </div>

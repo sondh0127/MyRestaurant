@@ -30,8 +30,7 @@
                                     <select name="product_id" id="product" class="form-control" required>
                                         <option value="">Select One</option>
                                         @foreach($products as $product)
-                                            <option value="{{$product->id}}">{{$product->product_name}}
-                                                | {{$product->product_code}}</option>
+                                            <option value="{{$product->id}}">{{$product->product_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -167,7 +166,7 @@
                                 <tr>
                                     <th colspan="5"></th>
                                     <th></th>
-                                    <th><a href="#" class="btn btn-success">Make a payment</a> </th>
+                                    <th><a href="{{url('purses-payment/' . $purses->id)}}" class="btn btn-success">Make a payment</a> </th>
                                 </tr>
 
                             @endif

@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label"></label>
                                 <div class="col-md-10">
-                                    <button type="submit" class="ladda-button btn btn-purple" data-style="expand-right">Save Item
+                                    <button type="submit" class="ladda-button btn btn-purple" data-style="expand-right">Save Product
 
                                     </button>
                                 </div>
