@@ -126,7 +126,7 @@ class UserController extends Controller
             $image = $request->file('thumbnail');
             $imageFileName = time() . '.' . $image->getClientOriginalExtension();
             $filePath = 'employee/' . $imageFileName;
-            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');
             $user->image = $filePath;
         }
         if ($user->save()) {
@@ -138,7 +138,7 @@ class UserController extends Controller
             $employee->user_id = $user->id;
             if ($employee->save()) {
                 // exception here
-                Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
+                // Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
                 return response()->json('Ok', 200);
             }
         }
@@ -178,11 +178,11 @@ class UserController extends Controller
                 $image = $request->file('thumbnail');
                 $imageFileName = time() . '.' . $image->getClientOriginalExtension();
                 $filePath = 'employee/' . $imageFileName;
-                Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+                Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');
                 $user->image = $filePath;
             }
             if($user->save()){
-                Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
+                // Mail::to($user->email)->send(new EmployeRegister($user->email,$request->get('password')));
                 return response()->json('Ok', 200);
             }
         }
