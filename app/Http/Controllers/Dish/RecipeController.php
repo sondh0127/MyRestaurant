@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dish;
 
 use App\Model\Dish;
-use App\Model\Product;
 use App\Model\Recipe;
+use App\Model\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RecipeController extends Controller
 {

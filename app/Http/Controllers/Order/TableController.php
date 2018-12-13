@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Order;
 
 use App\Model\Order;
 use App\Model\Table;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TableController extends Controller
 {

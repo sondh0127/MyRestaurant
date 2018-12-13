@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dish;
 
+use Carbon\Carbon;
 use App\Model\Dish;
 use App\Model\DishInfo;
 use App\Model\DishPrice;
 use App\Model\OrderDetails;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
@@ -41,7 +42,7 @@ class DishController extends Controller
     public function editDish($id)
     {
         $dish = Dish::findOrFail($id);
-        $dish->thumbnail = $dish->thumbnail != "" | null ? 
+        $dish->thumbnail = $dish->thumbnail != "" | null ?
         Storage::disk('s3')->url($dish->thumbnail) : url('/img_assets/avater.png');
         return view('user.admin.dish.edit-dish', [
             'dish' => $dish
@@ -56,7 +57,7 @@ class DishController extends Controller
     public function viewDish($id)
     {
         $dish = Dish::findOrFail($id);
-        $dish->thumbnail = $dish->thumbnail != "" | null ? 
+        $dish->thumbnail = $dish->thumbnail != "" | null ?
         Storage::disk('s3')->url($dish->thumbnail) : url('/img_assets/avater.png');
         return view('user.admin.dish.view-dish', [
             'dish' => $dish
@@ -101,7 +102,7 @@ class DishController extends Controller
             $image = $request->file('thumbnail');
             $imageFileName = 'dish' . time() . '.' . $image->getClientOriginalExtension();
             $filePath = 'dish/thumbnail/' . $imageFileName;
-            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');
             $dish->thumbnail = $filePath;
         }
         $dish->user_id = auth()->user()->id;
@@ -127,7 +128,7 @@ class DishController extends Controller
             $image = $request->file('thumbnail');
             $imageFileName = 'dish' . time() . '.' . $image->getClientOriginalExtension();
             $filePath = 'dish/thumbnail/' . $imageFileName;
-            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');
             $dish->thumbnail = $filePath;
         }
         $dish->user_id = auth()->user()->id;
@@ -232,7 +233,7 @@ class DishController extends Controller
             $image = $request->file('image');
             $imageFileName = 'dish_image' . time() . '.' . $image->getClientOriginalExtension();
             $filePath = 'dish/images/' . $imageFileName;
-            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');            
+            Storage::disk('s3')->put($filePath, file_get_contents($image), 'public');
             $dish_image->image = $filePath;
         }
         if ($dish_image->save()) {

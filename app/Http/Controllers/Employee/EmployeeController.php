@@ -1,34 +1,35 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employee;
 
 
-use App\Http\Requests\Employee\SaveEmployee;
-use App\Http\Requests\Employee\UpdateEmployee;
-use App\Mail\EmployeRegister;
-use App\Model\Dish;
-use App\Model\Employee;
-use App\Model\Order;
-use App\Model\OrderDetails;
-use App\Model\Product;
-use App\Model\ProductType;
-use App\Model\Purse;
-use App\Model\PursesPayment;
-use App\Model\Recipe;
-// use App\Model\Stock;
-use App\Model\Supplier;
-use App\Model\Table;
-use App\Model\Unit;
 use App\User;
+use App\Model\Dish;
+use App\Model\Unit;
+use App\Model\Order;
+use App\Model\Purse;
+use App\Model\Table;
+use App\Model\Recipe;
+use App\Model\Product;
+use App\Model\Employee;
+use App\Model\Supplier;
+use App\Model\ProductType;
+use App\Model\OrderDetails;
+// use App\Model\Stock;
+use App\Model\PursesPayment;
 use Illuminate\Http\Request;
+use App\Mail\EmployeRegister;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Employee\SaveEmployee;
+use App\Http\Requests\Employee\UpdateEmployee;
 
 // use Illuminate\Validation\Rule;
 
-class UserController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Add new employee

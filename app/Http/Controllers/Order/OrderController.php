@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Order;
 
-use App\Events\CompleteCooking;
+use App\Model\Dish;
+use App\Model\Order;
+use App\Model\Table;
+use App\Model\DishType;
+use App\Model\DishPrice;
 use App\Events\OrderCancel;
 use App\Events\OrderServed;
 use App\Events\OrderSubmit;
 use App\Events\OrderUpdate;
+use App\Model\OrderDetails;
 use App\Events\StartCooking;
 use App\Model\CookedProduct;
-use App\Model\Dish;
-use App\Model\DishPrice;
-use App\Model\DishType;
-use App\Model\Order;
-use App\Model\OrderDetails;
-use App\Model\Table;
 use Illuminate\Http\Request;
+use App\Events\CompleteCooking;
+use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {

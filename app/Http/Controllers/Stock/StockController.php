@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Stock;
 
-use App\Model\CookedProduct;
-use App\Model\DishPrice;
-use App\Model\Product;
-use App\Model\ProductType;
-use App\Model\PursesProduct;
-use App\Model\Recipe;
 use App\Model\Unit;
+use App\Model\Recipe;
+use App\Model\Product;
+use App\Model\DishPrice;
+use App\Model\ProductType;
+use App\Model\CookedProduct;
+use App\Model\PursesProduct;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class StockController extends Controller

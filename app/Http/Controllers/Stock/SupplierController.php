@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Stock;
 
+use App\Model\Purse;
 use App\Model\Supplier;
 use App\Model\PursesPayment;
-use App\Model\Purse;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SupplierController extends Controller
 {

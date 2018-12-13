@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Order;
 
-use App\Model\Order;
 use App\User;
 use Carbon\Carbon;
+use App\Model\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class WaiterController extends Controller
 {

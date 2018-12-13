@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Order;
 
-use App\Model\Order;
 use App\User;
 use Carbon\Carbon;
+use App\Model\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class KitchenController extends Controller
 {
@@ -103,7 +104,7 @@ class KitchenController extends Controller
      * @param $end_date
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function shoeKitchenStat($id,$start_date,$end_date)
+    public function showKitchenStat($id,$start_date,$end_date)
     {
         if($id != 0){
             $selected_kitchen = User::findOrFail($id);
